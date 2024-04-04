@@ -82,8 +82,8 @@
           <textarea required name="description" rows="6" ng-model="ticket.description"></textarea>
 
           <label style="margin-top: 20px;">File Upload</label>
-          <input name="ticketUpload" type="file" style="position: inherit; opacity: initial;" base-sixty-four-input maxsize="50000" ng-model="ticket.upload" do-not-parse-if-oversize/>
-          <span class="text-danger" ng-show="frmTicket.ticketUpload.$error.maxsize">Files must not exceed 50 MB</span>
+          <input name="ticketUpload" type="file" style="position: inherit; opacity: initial;" base-sixty-four-input maxsize="35000" ng-model="ticket.upload" do-not-parse-if-oversize/>
+          <span class="text-danger" ng-show="frmTicket.ticketUpload.$error.maxsize">Files must not exceed 35 MB</span>
 
           <div class="modal-footer">
             <div class="action-buttons">
