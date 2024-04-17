@@ -49,12 +49,6 @@
                                     </select>
                                     <i class="fa fa-map-marker"></i>
                                 </div>
-                                <div>
-                                    <button class="btn btn-info pull-right" type="button"
-                                            ng-hide="(shipaddressform || (!shipaddressform && !shipaddresses) || !user.Permissions.contains('CreateShipToAddress'))" ng-click="shipaddressform = true" tabindex="-1">
-                                        {{'New ' + ('Address' | r) | xlat}}
-                                    </button>
-                                </div>
                                 <div ng-show="user.ShipMethod != null && shippers" ng-class="{'view-form-select': !currentOrder.LineItems[0].ShipperName, '': currentOrder.LineItems[0].ShipperName }">
                                     <label ng-class="{required: !currentOrder.IsMultipleShip() && user.ShipMethod != null}" ng-show="currentOrder.LineItems[0].ShipperName || !currentOrder.IsMultipleShip() && user.ShipMethod != null">{{('Shipping' | r) + ' Method' | xlat}}</label>
                                     <select class="form-control" ng-change="updateShipper()" name="shipMethod"
@@ -88,6 +82,12 @@
                                     <small>{{orderShipAddress.City}}<span ng-if="orderShipAddress.City && currentOrderShipAddress.State">, </span> {{orderShipAddress.State}} {{orderShipAddress.Zip}}</small>
                                 </p>
                                 <p ng-show="orderShipAddress.Phone"><small>{{orderShipAddress.Phone}}</small></p>
+                            </div>
+                            <div style="margin-top: 1em;">
+                                <button class="btn btn-info pull-right" type="button"
+                                        ng-hide="(shipaddressform || (!shipaddressform && !shipaddresses) || !user.Permissions.contains('CreateShipToAddress'))" ng-click="shipaddressform = true" tabindex="-1">
+                                    {{'New ' + ('Address' | r) | xlat}}
+                                </button>
                             </div>
                             <div class="view-form-icon" ng-show="!currentOrder.IsMultipleShip() && user.ShipMethod.AskForAccountNumber">
                                 <div>
