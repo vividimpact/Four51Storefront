@@ -69,9 +69,10 @@ four51.app.controller('Four51Ctrl', ['$rootScope', '$scope', '$route', '$locatio
 						if (f.Name === 'TicketingDashboard') {
 							$scope.user.TicketingDashboard = true;
 						}
-						if (f.Name === '08_HOST_Acute Care Hospital and/or Physician Practice') {
+						if (f.Name === '08_HOST_Acute Care Hospital and/or Physician Practice' || f.Name === '01_G&O Group') {
 							$scope.hostUser = true;
 						}
+
 						if (f.Name === '08_HOST_Lifepoint HSC (South)') {
 							$scope.hostHscUser = true;
 						}
