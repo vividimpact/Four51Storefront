@@ -101,39 +101,47 @@ function drawForm_textbased() {
 		var content = '<div class="logo-selection-options">';
 		var masterFile = getMasterFileNameSpace();
 		var logoOptions = getMasterFileVariable('logoOptions');
+		var isVariant = angScope.Variant.InteropID;
 
 		if (masterFile === lpMasterFile) {
-			hasLogoSelection = true;
+			content = '';
 
-			//this is a lifepoint masterfile product, need to show an additional select for the healthcare system then show facility options after healthcare system is selected
-			var masterOptions = '';
-			for (var lo in logoOptions) {
-				masterOptions += '<option value="' + logoOptions[lo] + '">' + logoOptions[lo] + '</option>';
+			if (! isVariant) {
+				hasLogoSelection = true;
+
+				//this is a lifepoint masterfile product, need to show an additional select for the healthcare system then show facility options after healthcare system is selected
+				var masterOptions = '';
+				for (var lo in logoOptions) {
+					masterOptions += '<option value="' + logoOptions[lo] + '">' + logoOptions[lo] + '</option>';
+				}
+
+				content += '<div style="font-size: 11px; margin-bottom: 25px;"><label for="logo">Choose Healthcare System</label><select id="master" class="form-control nopad" required><option value="" selected disabled>Make a selection...</option>' + masterOptions + '</select></div>';
+
+				content += '<div class="logo-selection-options" style="display: none;">';
+
+				logoOptions = [];
+			} else {
+				content += '<div class="logo-selection-options">';
 			}
-
-			content = '<div style="font-size: 11px; margin-bottom: 25px;"><label for="logo">Choose Healthcare System</label><select id="master" class="form-control nopad" required><option value="" selected disabled>Make a selection...</option>' + masterOptions + '</select></div>';
-
-			content += '<div class="logo-selection-options" style="display: none;">';
-
-			logoOptions = [];
 		}
 
 		for (var y in angScope.Product.Specs) {
 			if (y === 'LogoSelection') {
-				hasLogoSelection = true;
-				var customLabel = angScope.Product.StaticSpecGroups['01-MasterFile']?.Specs?.DropdownLabel?.Value;
-				var options = '';
-				for (var z in logoOptions) {
-					options += '<option value="' + logoOptions[z] + '">' + logoOptions[z] + '</option>';
-				}
+				if (! isVariant) {
+					hasLogoSelection = true;
+					var customLabel = angScope.Product.StaticSpecGroups['01-MasterFile']?.Specs?.DropdownLabel?.Value;
+					var options = '';
+					for (var z in logoOptions) {
+						options += '<option value="' + logoOptions[z] + '">' + logoOptions[z] + '</option>';
+					}
 
-				if (customLabel) {
-					content += '<div style="font-size: 11px; margin-bottom: 25px;"><label for="logo">' + customLabel + '</label><select data-namespace="' + masterFile + '" id="logo" class="form-control nopad" required><option value="" selected disabled>Make a selection...</option>' + options + '</select></div>';
+					if (customLabel) {
+						content += '<div style="font-size: 11px; margin-bottom: 25px;"><label for="logo">' + customLabel + '</label><select data-namespace="' + masterFile + '" id="logo" class="form-control nopad" required><option value="" selected disabled>Make a selection...</option>' + options + '</select></div>';
+					}
+					else {
+						content += '<div style="font-size: 11px; margin-bottom: 25px;"><label for="logo">Choose Facility</label><select data-namespace="' + masterFile + '" id="logo" class="form-control nopad" required><option value="" selected disabled>Make a selection...</option>' + options + '</select></div>';
+					}
 				}
-				else {
-					content += '<div style="font-size: 11px; margin-bottom: 25px;"><label for="logo">Choose Facility</label><select data-namespace="' + masterFile + '" id="logo" class="form-control nopad" required><option value="" selected disabled>Make a selection...</option>' + options + '</select></div>';
-				}
-
 			} else {
 				var spec = angScope.Product.Specs[y];
 

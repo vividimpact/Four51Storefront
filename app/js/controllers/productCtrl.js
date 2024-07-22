@@ -74,7 +74,7 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 					$scope.$apply();
 					// $('#thumbContainerContainer').append('<div class="thumbTitle">Click to zoom</div><div class="thumbContainer"><img class="product-thumb cursorPointer" data-src="https://www.four51.com/Themes/Custom/700dfe64-2fbd-4bca-9c5c-f423c74b2912/KHC_Docs/' + $scope.LineItem.Product.ExternalID + '_pvd_01_lrg.jpg" src="img/gallery-1.jpg" alt=""></div>');
 				} else {
-					console.error('Image 1 does not exist.')
+					// console.error('Image 1 does not exist.');
 				}
 			});
 
@@ -84,7 +84,7 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 					$scope.$apply();
 					// $('#thumbContainerContainer').append('<div class="thumbContainer"><img class="product-thumb cursorPointer" data-src="https://www.four51.com/Themes/Custom/700dfe64-2fbd-4bca-9c5c-f423c74b2912/KHC_Docs/' + $scope.LineItem.Product.ExternalID + '_pvd_02_lrg.jpg" src="img/gallery-2.jpg" alt=""></div>');
 				} else {
-					console.error('Image 2 does not exist.')
+					// console.error('Image 2 does not exist.');
 				}
 			});
 			$scope.$broadcast('ProductGetComplete');
