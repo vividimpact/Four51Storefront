@@ -683,7 +683,7 @@
 							<div class="col-sm-12 col-xs-12 col-md-2" ng-if="sapHscUser || sapBehavioralUser || sapIrfUser || sapAruLtachUser || sapAruUser || hostHscUser || sapLOPMedSurg || sapLtachContract || hostUser">
 								<label style="font-size: 12px" for="glCode" class="required">GL Code</label>
 								<select ng-change="glCodeChanged(item)" id="glCode" ng-model="item.glCode" class="form-control glCode">
-									<option ng-if="!hostHscUser && !hostUser && sapAruLtachUser" ng-selected="'79016 - Marketing' == item.glCode" value="79016">79016 - Marketing</option>
+									<option ng-if="!hostHscUser && !hostUser && sapAruLtachUser && sapHscUser" ng-selected="'79016 - Marketing' == item.glCode" value="79016">79016 - Marketing</option>
 									<option ng-if="!hostHscUser && !hostUser && !sapAruLtachUser" ng-selected="'79015 - Employee Relations' == item.glCode" value="79015">79015 - Employee Relations</option>
 									<option ng-if="!hostHscUser && !hostUser&& !sapAruLtachUser" ng-selected="'72070 - Office Supplies' == item.glCode" value="72070">72070 - Office Supplies</option>
 									<option ng-if="!hostHscUser && !hostUser&& !sapAruLtachUser" ng-selected="'79020 - Other Supplies' == item.glCode" value="79020">79020 - Other Supplies</option>
